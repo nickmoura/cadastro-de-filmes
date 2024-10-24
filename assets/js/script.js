@@ -1,7 +1,7 @@
 document.getElementById('filmeForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Evita o envio padrão do formulário
 
-    const nome = document.getElementById('nome').value;
+    const nome = document.getElementById('nome_filme').value;
     const diretor = document.getElementById('diretor').value;
     const vistoem = document.getElementById('vistoem').value;
     const avaliacao = document.getElementById('avaliacao').value;
