@@ -41,6 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo json_encode(["status" => "erro", "message" => $conn->error]);
     }
 }
+else {
+    // Se não for um POST, exibe uma resposta clara
+    echo json_encode(["status" => "erro", "message" => "Metodo nao suportado"]);
+}
 
 $conn->close();
 ?>

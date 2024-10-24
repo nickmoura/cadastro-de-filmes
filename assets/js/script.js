@@ -20,14 +20,25 @@ document.getElementById('movieform').addEventListener('submit', async function (
                 method: 'POST',
                 body: formData
             });
-            console.log('Response:', response); // Verifique a resposta aqui
-
-            const result = await response.json(); // Verifique se é um JSON válido
-
-            if (result.status === 'sucesso') {
-                showToast('Filme cadastrado com sucesso!', 'green');
-            } else {
-                showToast('Erro ao cadastrar: ' + result.message, 'red');
+        
+            console.log('Response status:', response.status); // Status da resposta
+            console.log('Response headers:', response.headers); // Cabeçalhos da resposta
+        
+            const result = await response.text(); // Pegue a resposta como texto para ver o que é retornado
+            console.log('Raw response:', result); // Mostre a resposta bruta
+        
+            // Agora tente processar como JSON
+            try {
+                const jsonResult = JSON.parse(result);
+                console.log('Parsed JSON:', jsonResult);
+        
+                if (jsonResult.status === 'sucesso') {
+                    showToast('Filme cadastrado com sucesso!', 'green');
+                } else {
+                    showToast('Erro ao cadastrar: ' + jsonResult.message, 'red');
+                }
+            } catch (jsonError) {
+                showToast('Erro ao interpretar resposta JSON: ' + jsonError.message, 'red');
             }
         } catch (error) {
             console.log('Error:', error); // Exibe o erro no console
