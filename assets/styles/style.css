@@ -72,13 +72,13 @@ textarea:focus {
 }
 
 input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+	-webkit-appearance: none;
 
 }
 
 input[type=number] {
-    -moz-appearance: textfield;
-    appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
 
 }
 
@@ -101,3 +101,69 @@ button:focus {
 	box-shadow: none !important;
 	outline-width: 0
 }
+
+section {
+	color: #eec5c5;
+}
+
+/* Estilos para o toaster */
+#toaster {
+	min-width: 250px;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 5px;
+	padding: 16px;
+	position: fixed;
+	z-index: 1;
+	right: -300px; /* Inicia fora da tela */
+	top: 30px;
+	font-size: 17px;
+	opacity: 0;
+	transition: right 0.5s ease-in-out, opacity 0.5s ease-in-out;
+	overflow: hidden; /* Para garantir que o botão não saia do toaster */
+}
+
+#toaster.show {
+	right: 30px;
+	/* Posição final na tela */
+	opacity: 1;
+}
+
+#toaster.hide {
+	right: -300px;
+	/* Sai da tela pela direita */
+	opacity: 0;
+}
+
+#toaster .message {
+	margin-right: 30px; /* Dá espaço para o botão de fechar */
+  }
+
+/* Estilo para a timebar */
+#toaster .timebar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 5px;
+	background-color: #6b0202;
+	width: 0;
+	transition: width 3s linear;
+	/* Progresso da barra durante 3 segundos */
+}
+
+/* Estilos para o botão de fechar */
+#toaster .close-btn {
+	position: absolute;
+	top: 1px;
+	right: 8px;
+	background: none;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+  }
+
+  #toaster .close-btn:hover {
+	color: #ff6666;
+  }
