@@ -18,7 +18,6 @@ document.getElementById('filmeForm').addEventListener('submit', async function (
         try {
             const response = await fetch('https://nickmoura.free.nf/back_end/api/api.php', {
                 method: 'POST',
-                mode:'no-cors',
                 body: formData
             });
 
