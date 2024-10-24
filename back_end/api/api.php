@@ -1,13 +1,21 @@
 <?php
+// Ativa a exibição de erros
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // back_end/api/api.php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
+    exit; // Importante para evitar continuar o script no caso de uma requisição OPTIONS
+}
 // Configuração do banco de dados (InfinityFree)
 $servername = "sql211.infinityfree.com";
 $username = "if0_37576262";
 $password = "Testandosenha12";
 $dbname = "if0_37576262_nickfilmes";
+
 
 // Conexão
 $conn = new mysqli($servername, $username, $password, $dbname);

@@ -20,8 +20,9 @@ document.getElementById('movieform').addEventListener('submit', async function (
                 method: 'POST',
                 body: formData
             });
+            console.log('Response:', response); // Verifique a resposta aqui
 
-            const result = await response.json();
+            const result = await response.json(); // Verifique se é um JSON válido
 
             if (result.status === 'sucesso') {
                 showToast('Filme cadastrado com sucesso!', 'green');
@@ -29,6 +30,7 @@ document.getElementById('movieform').addEventListener('submit', async function (
                 showToast('Erro ao cadastrar: ' + result.message, 'red');
             }
         } catch (error) {
+            console.log('Error:', error); // Exibe o erro no console
             showToast('Erro ao enviar dados: ' + error.message, 'red');
         }
     }
