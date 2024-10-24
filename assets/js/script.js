@@ -16,10 +16,9 @@ document.getElementById('movieform').addEventListener('submit', async function (
         formData.append('rate', rate);
 
         try {
-            const response = await fetch('https://nickmoura.free.nf/back_end/api/api.php', {
+            const response = await fetch('https://okh8yo4l27.execute-api.us-east-1.amazonaws.com/', {
                 method: 'POST',
                 body: formData,
-                mode: 'no-cors' // Adiciona o modo no-cors temporariamente para teste
             });
         
             console.log('Response status:', response.status); // Status da resposta
