@@ -19,13 +19,13 @@ if ($conn->connect_error) {
 
 // Verifica se os dados foram enviados via POST
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome_filme = $_POST['nome_filme'];
-    $diretor = $_POST['diretor'];
-    $vistoem = $_POST['vistoem'];
-    $avaliacao = $_POST['avaliacao'];
+    $moviename = $_POST['moviename'];
+    $director = $_POST['director'];
+    $seenon = $_POST['seenon'];
+    $rate = $_POST['rate'];
 
     // Insere no banco de dados
-    $sql = "INSERT INTO filmes (nome, diretor, vistoem, avaliacao) VALUES ('$nome_filme', '$diretor', '$vistoem', '$avaliacao')";
+    $sql = "INSERT INTO filmes (moviename, director, seenon, rate) VALUES ('$moviename', '$director', '$seenon', '$rate')";
     
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["status" => "sucesso"]);

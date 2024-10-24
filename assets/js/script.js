@@ -1,19 +1,19 @@
-document.getElementById('filmeForm').addEventListener('submit', async function (event) {
+document.getElementById('movieform').addEventListener('submit', async function (event) {
     event.preventDefault(); // Evita o envio padrão do formulário
 
-    const nome = document.getElementById('nome_filme').value;
-    const diretor = document.getElementById('diretor').value;
-    const vistoem = document.getElementById('vistoem').value;
-    const avaliacao = document.getElementById('avaliacao').value;
+    const moviename = document.getElementById('moviename').value;
+    const director = document.getElementById('director').value;
+    const seenon = document.getElementById('seenon').value;
+    const rate = document.getElementById('rate').value;
 
-    if (nome === '' || diretor === '' || avaliacao === '') {
+    if (moviename === '' || director === '' || rate === '') {
         showToast('Preencha todos os campos!', '#eec5c5', '#6b0202');
     } else {    
         const formData = new FormData();
-        formData.append('nome_filme', nome);
-        formData.append('diretor', diretor);
-        formData.append('vistoem', vistoem);
-        formData.append('avaliacao', avaliacao);
+        formData.append('moviename', moviename);
+        formData.append('director', director);
+        formData.append('seenon', seenon);
+        formData.append('rate', rate);
 
         try {
             const response = await fetch('https://nickmoura.free.nf/back_end/api/api.php', {
@@ -84,7 +84,7 @@ function showToast(message, color, textColor = '#fff') {
 }
 
 // Lógica dos placeholders (mantém a mesma)
-const elementos = document.querySelectorAll('#nome, #diretor, #vistoem, #avaliacao');
+const elementos = document.querySelectorAll('#moviename, #director, #seenon, #rate');
 elementos.forEach(elemento => {
   elemento.dataset.placeholderOriginal = elemento.placeholder;
   elemento.addEventListener('focus', function() {

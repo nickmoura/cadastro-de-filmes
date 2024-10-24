@@ -17,30 +17,30 @@
 				<h1>Cadastro de filmes</h1>
 				<div class="card">
 					<h5 class="text-center mb-4">Cadastre aqui o último filme que assistiu</h5>
-					<form id="filmeForm" action="https://nickmoura.free.nf/back_end/api/api.php" method="POST"
+					<form id="movieform" action="https://nickmoura.free.nf/back_end/api/api.php" method="POST"
 						class="form-card" onsubmit="event.preventDefault()">
 						<div class="row justify-content-between text-left">
 							<div class="form-group col-12 flex-column d-flex">
-								<input type="text" id="nome_filme" name="nome_filme" placeholder="Nome do filme"
+								<input type="text" id="moviename" name="moviename" placeholder="Nome do filme"
 									onblur="validate(1)">
 							</div>
 						</div>
 						<div class="row justify-content-between text-left">
 							<div class="form-group col-12 flex-column d-flex">
-								<input type="text" id="diretor" name="diretor" placeholder="Diretor"
+								<input type="text" id="director" name="director" placeholder="Diretor"
 									onblur="validate(2)">
 							</div>
 						</div>
 						<div class="row justify-content-between text-left">
 							<div class="form-group col-12 flex-column d-flex">
-								<input type="date" id="vistoem" name="vistoem" placeholder="Data em que assistiu"
+								<input type="date" id="seenon" name="seenon" placeholder="Data em que assistiu"
 									onblur="validate(3)">
 							</div>
 						</div>
 						<div class="row justify-content-between text-left">
 							<div class="form-group col-12 flex-column d-flex">
 								<input type="number" max="5" min="0" oninput="this.value=this.value.slice(0,1)"
-									id="avaliacao" name="avaliacao" placeholder="Avaliação (0 a 5)"
+									id="rate" name="rate" placeholder="Avaliação (0 a 5)"
 									onblur="validate(4)">
 							</div>
 						</div>
