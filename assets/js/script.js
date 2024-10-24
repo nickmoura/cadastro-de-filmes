@@ -1,4 +1,4 @@
-document.getElementById('filmeForm').addEventListener('submit', async function(event) {
+document.getElementById('filmeForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Evita o envio padrão do formulário
 
     const nome = document.getElementById('nome').value;
@@ -39,4 +39,19 @@ document.getElementById('filmeForm').addEventListener('submit', async function(e
             mensagemElement.style.color = 'red';
         }
     }
+});
+
+const elementos = document.querySelectorAll('#nome, #diretor, #vistoem, #avaliacao');
+
+elementos.forEach(elemento => {
+  // Salva o placeholder original em um atributo de dados
+  elemento.dataset.placeholderOriginal = elemento.placeholder;
+
+  elemento.addEventListener('focus', function() {
+    this.placeholder = '';
+  });
+
+  elemento.addEventListener('blur', function() {
+    this.placeholder = this.dataset.placeholderOriginal;
+  });
 });
