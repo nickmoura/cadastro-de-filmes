@@ -18,7 +18,7 @@ document.getElementById('movieform').addEventListener('submit', async function (
         try {
             const response = await fetch('https://nickmoura.free.nf/back_end/api/api.php', {
                 method: 'POST',
-                body: formData
+                body: formData,
                 mode: 'no-cors' // Adiciona o modo no-cors temporariamente para teste
             });
         
