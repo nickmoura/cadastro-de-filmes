@@ -16,7 +16,7 @@ document.getElementById('filmeForm').addEventListener('submit', async function (
         formData.append('avaliacao', avaliacao);
 
         try {
-            const response = await fetch('http://nickmoura.free.nf/back_end/api/api.php', {
+            const response = await fetch('https://nickmoura.free.nf/back_end/api/api.php', {
                 method: 'POST',
                 body: formData
             });
