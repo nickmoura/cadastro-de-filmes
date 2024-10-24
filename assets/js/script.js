@@ -83,10 +83,6 @@ function showToast(message, color, textColor = '#fff') {
     });
 }
 
-
-
-
-
 // Lógica dos placeholders (mantém a mesma)
 const elementos = document.querySelectorAll('#nome, #diretor, #vistoem, #avaliacao');
 elementos.forEach(elemento => {
