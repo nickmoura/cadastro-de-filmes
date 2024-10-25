@@ -18,6 +18,7 @@ document.getElementById('movieform').addEventListener('submit', async function (
         try {
             const response = await fetch('https://okh8yo4l27.execute-api.us-east-1.amazonaws.com/', {
                 method: 'POST',
+                mode: 'no-cors',
                 body: formData,
             });
         
