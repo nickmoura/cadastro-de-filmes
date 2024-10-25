@@ -1,52 +1,41 @@
-document.getElementById('movieform').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Evita o envio padrão do formulário
-
-    const moviename = document.getElementById('moviename').value;
-    const director = document.getElementById('director').value;
-    const seenon = document.getElementById('seenon').value;
-    const rate = document.getElementById('rate').value;
-
-    if (moviename === '' || director === '' || rate === '') {
-        showToast('Preencha todos os campos!', '#eec5c5', '#6b0202');
-    } else {    
-        const formData = new FormData();
-        formData.append('moviename', moviename);
-        formData.append('director', director);
-        formData.append('seenon', seenon);
-        formData.append('rate', rate);
-
-        try {
-            const response = await fetch('https://okh8yo4l27.execute-api.us-east-1.amazonaws.com/', {
-                method: 'POST',
-                mode: 'no-cors',
-                body: formData,
-            });
-        
-            console.log('Response status:', response.status); // Status da resposta
-            console.log('Response headers:', response.headers); // Cabeçalhos da resposta
-        
-            const result = await response.text(); // Pegue a resposta como texto para ver o que é retornado
-            console.log('Raw response:', result); // Mostre a resposta bruta
-        
-            // Agora tente processar como JSON
-            try {
-                const jsonResult = JSON.parse(result);
-                console.log('Parsed JSON:', jsonResult);
-        
-                if (jsonResult.status === 'sucesso') {
-                    showToast('Filme cadastrado com sucesso!', 'green');
-                } else {
-                    showToast('Erro ao cadastrar: ' + jsonResult.message, 'red');
-                }
-            } catch (jsonError) {
-                showToast('Erro ao interpretar resposta JSON: ' + jsonError.message, 'red');
-            }
-        } catch (error) {
-            console.log('Error:', error); // Exibe o erro no console
-            showToast('Erro ao enviar dados: ' + error.message, 'red');
-        }
+document.getElementById("movieform").addEventListener("submit", async (event) => {
+    event.preventDefault();
+  
+    const moviename = document.getElementById("moviename").value;
+    const director = document.getElementById("director").value;
+    const seenon = document.getElementById("seenon").value;
+    const rate = document.getElementById("rate").value;
+  
+    try {
+      const response = await fetch("https://old-smoke-0254.nickmoura26.workers.dev/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ moviename, director, seenon, rate })
+      });
+  
+      const result = await response.json();
+      if (response.ok) {
+        showToaster("Filme cadastrado com sucesso!");
+      } else {
+        showToaster(`Erro: ${result.message}`);
+      }
+    } catch (error) {
+      showToaster("Erro ao cadastrar o filme. Tente novamente mais tarde.");
     }
-});
+  });
+  
+  function showToaster(message) {
+    const toaster = document.getElementById("toaster");
+    toaster.querySelector(".message").textContent = message;
+    toaster.classList.add("show");
+  
+    setTimeout(() => {
+      toaster.classList.remove("show");
+    }, 3000);
+  }
+  
 
 // Função para fechar o toaster manualmente
 function closeToast() {
