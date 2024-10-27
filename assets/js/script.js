@@ -7,7 +7,8 @@ document.getElementById("movieform").addEventListener("submit", async (event) =>
     const rate = document.getElementById("rate").value;
   
     try {
-      const response = await fetch(console.log({ moviename, director, seenon, rate }), {
+        console.log({ moviename, director, seenon, rate });
+      const response = await fetch("https://old-smoke-0254.nickmoura26.workers.dev/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
