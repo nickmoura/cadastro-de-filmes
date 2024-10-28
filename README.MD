@@ -49,7 +49,7 @@ Este projeto consiste em um formulário onde o usuário pode registrar o nome de
 
 4. **Hospedar a API em Ambiente Privado**
 
-	Para manter as credenciais do banco de dados seguras, recomendamos hospedar a API em um ambiente que suporte variáveis de ambiente e acesso privado ao código. No meu caso, escolhi a **Vercel**. Aqui estão algumas opções populares:
+	Para manter as credenciais do banco de dados seguras, recomendamos hospedar os dois arquivos da API em um ambiente que suporte variáveis de ambiente e acesso privado ao código. No meu caso, escolhi a **Vercel**. Aqui estão algumas opções populares:
 
    - **Heroku**: Fácil de configurar e permite variáveis de ambiente (chamadas de `Config Vars`). Heroku oferece uma camada gratuita com recursos básicos, ideal para projetos de pequeno porte.
      - Guia de Deploy: [Heroku Node.js Deployment](https://devcenter.heroku.com/articles/deploying-nodejs)
@@ -66,14 +66,29 @@ Este projeto consiste em um formulário onde o usuário pode registrar o nome de
    - **Railway**: Plataforma fácil de usar para deploy de aplicativos Node.js com suporte a variáveis de ambiente e banco de dados integrados. O plano gratuito inclui uma boa quantidade de horas de uso.
      - Guia de Deploy: [Railway Node.js Guide](https://docs.railway.app/deploy/quickstart)
 
-5. **Rodar o Backend em Ambiente Local (opcional)**
+5. **Atualizar o cliente fetch**
+	- Após o deploy da API, insira a URL no arquivo `script.js`:
+		```javascript
+		const response = await fetch("https://linkdasuaapi.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ moviename, director, seenon, rate })
+      });
+	```
+
+6. **Rodar o Backend em Ambiente Local (opcional)**
     - Para desenvolvimento local, execute o seguinte comando na pasta `API`:
       ```bash
       node index.js
       ```
 
-6. **Abrir o Formulário**
-    - Abra o arquivo `index.html` no navegador e preencha o formulário para registrar uma avaliação de filme.
+7. **Abrir o Formulário**
+    - Após o deploy da API e da aplicação, acesse a página `index.html` no navegador e preencha o formulário para registrar uma avaliação de filme.
+
+8. **Conferir**
+	- Abra seu banco de dados e veja se a linha é inserida.
 
 ## Contribuição
 Contribuições são bem-vindas! Envie um pull request ou entre em contato para mais informações.
