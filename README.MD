@@ -76,7 +76,7 @@ Este projeto consiste em um formulário onde o usuário pode registrar o nome de
         },
         body: JSON.stringify({ moviename, director, seenon, rate })
       });
-	```
+		```
 
 6. **Rodar o Backend em Ambiente Local (opcional)**
     - Para desenvolvimento local, execute o seguinte comando na pasta `API`:
