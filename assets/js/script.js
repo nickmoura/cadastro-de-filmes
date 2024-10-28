@@ -8,7 +8,7 @@ document.getElementById("movieform").addEventListener("submit", async (event) =>
   
     try {
         console.log({ moviename, director, seenon, rate });
-      const response = await fetch("https://old-smoke-0254.nickmoura26.workers.dev/", {
+      const response = await fetch("https://api-filmes-sepia-three.vercel.app/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
